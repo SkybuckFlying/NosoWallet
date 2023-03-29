@@ -1,13 +1,11 @@
 unit mpRed;
 
-{$mode objfpc}{$H+}
-
 interface
 
 uses
   Classes, forms, SysUtils, MasterPaskalForm, nosotime, IdContext, IdGlobal, mpGUI, mpDisk,
-  mpBlock, fileutil, graphics,  dialogs, strutils, mpcoin, fphttpclient,
-  opensslsockets,translation, IdHTTP, IdComponent, IdSSLOpenSSL, mpmn, IdTCPClient,
+  mpBlock, graphics,  dialogs, strutils, mpcoin,
+  translation, IdHTTP, IdComponent, IdSSLOpenSSL, mpmn, IdTCPClient,
   nosodebug,nosogeneral, nosocrypto, nosounit;
 
 function GetSlotFromIP(Ip:String):int64;

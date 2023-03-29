@@ -1,0 +1,23 @@
+unit UnitCriticalSections;
+
+interface
+
+uses
+	SyncObjs;
+
+procedure EnterCriticalSection( Para : TCriticalSection );
+procedure LeaveCriticalSection( Para : TCriticalSection );
+
+implementation
+
+procedure EnterCriticalSection( Para : TCriticalSection );
+begin
+
+end;
+
+procedure LeaveCriticalSection( Para : TCriticalSection );
+begin
+
+end;
+
+end.

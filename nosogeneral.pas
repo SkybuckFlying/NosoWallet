@@ -7,12 +7,10 @@ Noso Unit for general functions
 Requires: Not dependencyes
 }
 
-{$mode ObjFPC}{$H+}
-
 INTERFACE
 
 uses
-  Classes, SysUtils, Process, StrUtils;
+  Classes, SysUtils, StrUtils;
 
 Function Parameter(LineText:String;ParamNumber:int64;de_limit:string=' '):String;
 Function IsValidIP(IpString:String):boolean;
@@ -33,12 +31,20 @@ IMPLEMENTATION
 {Returns a specific parameter number of text}
 Function Parameter(LineText:String;ParamNumber:int64;de_limit:string=' '):String;
 var
-  Temp : String = '';
+  Temp : String;
   ThisChar : Char;
-  Contador : int64 = 1;
-  WhiteSpaces : int64 = 0;
-  parentesis : boolean = false;
+  Contador : int64;
+  WhiteSpaces : int64;
+  parentesis : boolean;
 Begin
+  Temp := '';
+  Contador := 1;
+  WhiteSpaces := 0;
+  parentesis := false;
+
+  Contador := 1;
+  WhiteSpaces := 0;
+
   while contador <= Length(LineText) do
     begin
     ThisChar := Linetext[contador];
@@ -128,7 +134,8 @@ End;
 Function Int2Curr(LValue: int64): string;
 Begin
   Result := IntTostr(Abs(LValue));
-  result :=  AddChar('0',Result, 9);
+  // Skybuck: Fix Me
+//  result :=  AddChar('0',Result, 9);
   Insert('.',Result, Length(Result)-7);
   If LValue <0 THen Result := '-'+Result;
 End;
@@ -136,28 +143,32 @@ End;
 {Runs an external program}
 Procedure RunExternalProgram(ProgramToRun:String);
 var
-  Process: TProcess;
+  // Skybuck: Fix Me
+//  Process: TProcess;
   I: Integer;
 Begin
+  // Skybuck: Fix Me
+(*
   Process := TProcess.Create(nil);
-    TRY
-    Process.InheritHandles := False;
-    Process.Options := [];
-    Process.ShowWindow := swoShow;
-    for I := 1 to GetEnvironmentVariableCount do
-      Process.Environment.Add(GetEnvironmentString(I));
-    {$IFDEF UNIX}
-    process.Executable := 'bash';
-    process.Parameters.Add(ProgramToRun);
-    {$ENDIF}
-    {$IFDEF WINDOWS}
-    Process.Executable := ProgramToRun;
-    {$ENDIF}
-    Process.Execute;
-    EXCEPT ON E:Exception do
+	TRY
+	Process.InheritHandles := False;
+	Process.Options := [];
+	Process.ShowWindow := swoShow;
+	for I := 1 to GetEnvironmentVariableCount do
+	  Process.Environment.Add(GetEnvironmentString(I));
+	{$IFDEF UNIX}
+	process.Executable := 'bash';
+	process.Parameters.Add(ProgramToRun);
+	{$ENDIF}
+	{$IFDEF WINDOWS}
+	Process.Executable := ProgramToRun;
+	{$ENDIF}
+	Process.Execute;
+	EXCEPT ON E:Exception do
 
-    END; {TRY}
+	END; {TRY}
   Process.Free;
+*)
 End;
 
 {Returns the required noso stack size}

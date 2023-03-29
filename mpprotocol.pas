@@ -1,12 +1,10 @@
-unit mpProtocol;
-
-{$mode objfpc}{$H+}
+﻿unit mpProtocol;
 
 interface
 
 uses
   Classes, SysUtils, mpRed, MasterPaskalForm, mpParser, StrUtils, mpDisk, nosotime, mpBlock,
-  Zipper, mpcoin, mpMn, nosodebug, nosogeneral, nosocrypto, nosounit;
+  mpcoin, mpMn, nosodebug, nosogeneral, nosocrypto, nosounit, UnitCriticalSections;
 
 function GetPTCEcn():String;
 Function GetOrderFromString(textLine:String):TOrderData;
@@ -167,11 +165,17 @@ End;
 //Devuelve la linea de protocolo solicitada
 Function ProtocolLine(tipo:integer):String;
 var
-  Resultado     : String = '';
-  Encabezado    : String = '';
-  TempStr       : string = '';
-  LastDownBlock : integer =0;
+  Resultado     : String;
+  Encabezado    : String;
+  TempStr       : string;
+  LastDownBlock : integer;
 Begin
+  // Skybuck: Fix Me
+  Resultado     := '';
+  Encabezado    := '';
+  TempStr       := '';
+  LastDownBlock :=0;
+
 Encabezado := 'PSK '+IntToStr(protocolo)+' '+ProgramVersion+subversion+' '+UTCTimeStr+' ';
 if tipo = OnlyHeaders then
    resultado := '';
@@ -273,13 +277,20 @@ End;
 // Procesa todas las lineas procedentes de las conexiones
 Procedure ParseProtocolLines();
 var
-  contador : integer = 0;
-  UsedProtocol : integer = 0;
-  UsedVersion : string = '';
-  PeerTime: String = '';
-  Linecomando : string = '';
+  contador : integer;
+  UsedProtocol : integer;
+  UsedVersion : string;
+  PeerTime: String;
+  Linecomando : string;
   ProcessLine : String;
 Begin
+	// Skybuck: Fix Me
+  contador := 0;
+  UsedProtocol := 0;
+  UsedVersion := '';
+  PeerTime := '';
+  Linecomando := '';
+
 for contador := 1 to MaxConecciones do
    begin
    if ( (LengthIncoming(contador) > 200) and (not IsSeedNode(Conexiones[contador].ip)) ) then
@@ -368,10 +379,13 @@ End;
 // Devuelve una cadena con la info de los 50 primeros nodos validos.
 function GetNodesString():string;
 var
-  NodesString : String = '';
-  NodesAdded : integer = 0;
+  NodesString : String;
+  NodesAdded : integer;
   Counter : integer;
 Begin
+	// Skybuck: Fix Me
+  NodesString := '' ;
+  NodesAdded := 0;
 for counter := 0 to length(ListaNodos)-1 do
    begin
    NodesString := NodesString+' '+ListaNodos[counter].ip+':'+ListaNodos[counter].port+':'
@@ -493,8 +507,9 @@ End;
 // Devuelve la informacion contenida en un ping
 function GetPingString():string;
 var
-  Port : integer = 0;
+  Port : integer;
 Begin
+	Port := 0;
 if Form1.Server.Active then port := Form1.Server.DefaultPort else port:= -1 ;
 result :=IntToStr(GetTotalConexiones())+' '+
          IntToStr(MyLastBlock)+' '+
@@ -1013,7 +1028,7 @@ var
 
   Procedure LaunchDirectiveThread(LParameter:String);
   var
-    ThDirect  : TThreadDirective;
+	ThDirect  : TThreadDirective;
   Begin
   if not WO_AutoUpdate then exit;
   ThDirect := TThreadDirective.Create(true,LParameter);

@@ -12,8 +12,6 @@ Changes:
 - Block time related functions.
 }
 
-{$mode ObjFPC}{$H+}
-
 interface
 
 uses
@@ -90,15 +88,17 @@ If directly invoked, will block the main thread until finish. (not recommended e
 }
 Function GetTimeOffset(NTPServers:String):int64;
 var
-  Counter    : integer = 0;
+  Counter    : integer;
   ThisNTP    : int64;
   MyArray    : array of string;
   RanNumber : integer;
 Begin
 Result := 0;
+Counter := 0;
 NTPServers := StringReplace(NTPServers,':',' ',[rfReplaceAll, rfIgnoreCase]);
 NTPServers := Trim(NTPServers);
-MyArray := SplitString(NTPServers,' ');
+// Skybuck: Fix Me
+//MyArray := SplitString(NTPServers,' ');
 Rannumber := Random(length(MyArray));
 For Counter := 0 to length(MyArray)-1 do
    begin
@@ -136,7 +136,8 @@ var
   LThread : TThreadUpdateOffset;
 Begin
 if UTCTime <= LastRun+4 then exit;
-LastRun := UTCTime;
+// Skybuck: Fix Me
+//LastRun := UTCTime;
 LThread := TThreadUpdateOffset.Create(true,NTPservers);
 LThread.FreeOnTerminate:=true;
 LThread.Start;
@@ -145,8 +146,9 @@ End;
 {Tool: returns a simple string with the time elapsed since the provided timestamp [LValue]}
 function TimeSinceStamp(Lvalue:int64):string;
 var
-  Elapsed : Int64 = 0;
+  Elapsed : Int64;
 Begin
+Elapsed := 0;
 Elapsed := UTCTime - Lvalue;
 if Elapsed div 60 < 1 then result := '<1m'
 else if Elapsed div 3600 < 1 then result := IntToStr(Elapsed div 60)+'m'

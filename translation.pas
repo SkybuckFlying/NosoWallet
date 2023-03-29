@@ -1,6 +1,4 @@
-unit translation;
-
-{$mode objfpc}{$H+}
+﻿unit translation;
 
 interface
 

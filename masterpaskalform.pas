@@ -1,16 +1,14 @@
-unit MasterPaskalForm;
-
-{$mode objfpc}{$H+}
+﻿unit MasterPaskalForm;
 
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, LCLType,
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,
   Grids, ExtCtrls, Buttons, IdTCPServer, IdContext, IdGlobal, IdTCPClient,
-  fileutil, Clipbrd, Menus, formexplore, lclintf, ComCtrls, Spin,
+  Clipbrd, Menus, ComCtrls, Spin,
   strutils, math, IdHTTPServer, IdCustomHTTPServer,
-  IdHTTP, fpJSON, Types, DefaultTranslator, LCLTranslator, translation, nosodebug,
-  ubarcodes, IdComponent,nosogeneral,nosocrypto, nosounit;
+  IdHTTP, Types, translation, nosodebug,
+  IdComponent,nosogeneral,nosocrypto, nosounit, SyncObjs;
 
 type
 
@@ -253,7 +251,8 @@ type
   { TForm1 }
 
   TForm1 = class(TForm)
-    BarcodeQR1: TBarcodeQR;
+	// Skybuck: Fix Me
+//    BarcodeQR1: TBarcodeQR;
     BQRCode: TSpeedButton;
     BitBtnDonate: TBitBtn;
     BitBtnWeb: TBitBtn;
@@ -818,38 +817,38 @@ var
   // Threads
   RebulidTrxThread : TThreadID;
   CriptoOPsThread : TThreadID;
-    CriptoThreadRunning : boolean = false;
+	CriptoThreadRunning : boolean = false;
 
   ArrayCriptoOp : array of TArrayCriptoOp;
 
   // Critical Sections
-  CSProcessLines: TRTLCriticalSection;
-  CSOutgoingMsjs: TRTLCriticalSection;
-  CSHeadAccess  : TRTLCriticalSection;
-  CSBlocksAccess: TRTLCriticalSection;
-  CSSumary      : TRTLCriticalSection;
-  CSPending     : TRTLCriticalSection;
-  CSCriptoThread: TRTLCriticalSection;
-  CSClosingApp  : TRTLCriticalSection;
-  CSNMSData     : TRTLCriticalSection;
-  CSClientReads : TRTLCriticalSection;
-  CSGVTsArray   : TRTLCriticalSection;
-  CSNosoCFGStr  : TRTLCriticalSection;
+  CSProcessLines: TCriticalSection;
+  CSOutgoingMsjs: TCriticalSection;
+  CSHeadAccess  : TCriticalSection;
+  CSBlocksAccess: TCriticalSection;
+  CSSumary      : TCriticalSection;
+  CSPending     : TCriticalSection;
+  CSCriptoThread: TCriticalSection;
+  CSClosingApp  : TCriticalSection;
+  CSNMSData     : TCriticalSection;
+  CSClientReads : TCriticalSection;
+  CSGVTsArray   : TCriticalSection;
+  CSNosoCFGStr  : TCriticalSection;
 
   // old system
-  CSMNsArray    : TRTLCriticalSection;
-  CSWaitingMNs  : TRTLCriticalSection;
+  CSMNsArray    : TCriticalSection;
+  CSWaitingMNs  : TCriticalSection;
   //new MNs system
-  CSMNsList     : TRTLCriticalSection;
-  CSMNsChecks   : TRTLCriticalSection;
+  CSMNsList     : TCriticalSection;
+  CSMNsChecks   : TCriticalSection;
 
-  CSIdsProcessed: TRTLCriticalSection;
+  CSIdsProcessed: TCriticalSection;
   // Server handling
-  CSNodesList   : TRTLCriticalSection;
+  CSNodesList   : TCriticalSection;
   // Outgoing lines, needs to be initialized
-  CSOutGoingArr : array[1..MaxConecciones] of TRTLCriticalSection;
+  CSOutGoingArr : array[1..MaxConecciones] of TCriticalSection;
      ArrayOutgoing : array[1..MaxConecciones] of array of string;
-  CSIncomingArr : array[1..MaxConecciones] of TRTLCriticalSection;
+  CSIncomingArr : array[1..MaxConecciones] of TCriticalSection;
 
   // FormState
   FormState_Top    : integer;
@@ -859,7 +858,8 @@ var
   FormState_Status : integer;
 
   // Filename variables
-
+  // Skybuck: Fix Me
+{
   BotDataFilename     :string= 'NOSODATA'+DirectorySeparator+'botdata.psk';
   WalletFilename      :string= 'NOSODATA'+DirectorySeparator+'wallet.pkw';
   BlockDirectory      :string= 'NOSODATA'+DirectorySeparator+'BLOCKS'+DirectorySeparator;
@@ -876,7 +876,27 @@ var
   ZipHeadersFileName  :string= 'NOSODATA'+DirectorySeparator+'blchhead.zip';
   GVTsFilename        :string= 'NOSODATA'+DirectorySeparator+'gvts.psk';
   NosoCFGFilename     :string= 'NOSODATA'+DirectorySeparator+'nosocfg.psk';
+}
 
+  BotDataFilename     :string;
+  WalletFilename      :string;
+  BlockDirectory      :string;
+  MarksDirectory      :string;
+  GVTMarksDirectory   :string;
+  UpdatesDirectory    :string;
+  LogsDirectory       :string;
+  ExceptLogFilename   :string;
+  ConsoleLogFilename  :string;
+  ResumenFilename     :string;
+  EventLogFilename    :string;
+  AdvOptionsFilename  :string;
+  MasterNodesFilename :string;
+  ZipHeadersFileName  :string;
+  GVTsFilename        :string;
+  NosoCFGFilename     :string;
+
+
+var
   MontoIncoming : Int64 = 0;
   MontoOutgoing : Int64 = 0;
   InfoPanelTime : integer = 0;
@@ -885,9 +905,9 @@ IMPLEMENTATION
 
 Uses
   mpgui, mpdisk, mpParser, mpRed, nosotime, mpProtocol, mpcoin,
-  mpRPC,mpblock, mpMN;
+  mpRPC,mpblock, mpMN, UnitCriticalSection;
 
-{$R *.lfm}
+// {$R *.lfm}
 
 // Identify the pool miners connections
 constructor TNodeConnectionInfo.Create;

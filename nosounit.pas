@@ -6,13 +6,11 @@ January 8th 2023
 Noso project unit to manage summary
 }
 
-{$mode ObjFPC}{$H+}
-
 INTERFACE
 
 uses
-  Classes, SysUtils, Zipper,
-  nosocrypto, nosodebug;
+  Classes, SysUtils,
+  nosocrypto, nosodebug, UnitCriticalSections;
 
 Type
   TSummaryData = Packed Record
@@ -86,18 +84,23 @@ Var
   WorkingPath     : string = '';
 
   {Summary related}
-  SummaryFileName     : string = 'NOSODATA'+DirectorySeparator+'sumary.psk';
-  ZipSumaryFileName   : string = 'NOSODATA'+DirectorySeparator+'sumary.zip';
+  // Skybuck: Fix Me
+//  SummaryFileName     : string = 'NOSODATA'+DirectorySeparator+'sumary.psk';
+  SummaryFileName     : string = 'NOSODATA'{+DirectorySeparator}+'sumary.psk';
+//  ZipSumaryFileName   : string = 'NOSODATA'+DirectorySeparator+'sumary.zip';
   SummaryLastop       : int64;
 
 IMPLEMENTATION
 
+uses
+	SyncObjs;
+
 var
   IndexLength     : int64 = 10;
   SumaryIndex     : Array of TindexRecord;
-  CS_SummaryDisk  : TRTLCriticalSection;   {Disk access to summary}
+  CS_SummaryDisk  : TCriticalSection;   {Disk access to summary}
   BlockRecords    : array of TBlockRecords;
-  CS_BlockRecs    : TRTLCriticalSection;
+  CS_BlockRecs    : TCriticalSection;
 
 {$REGION Protocol utilitys}
 
@@ -130,7 +133,8 @@ var
   lFile : file;
 Begin
   TRY
-  assignfile(lFile,SummaryFileName);
+    // Skybuck: Fix Me
+  //  assignfile(lFile,SummaryFileName);
   Rewrite(lFile);
   CloseFile(lFile);
   CreateSumaryIndex;
@@ -149,9 +153,11 @@ End;
 {Must be replaced with new stream compression methods}
 Function ZipSumary():boolean;
 var
-  MyZipFile: TZipper;
+  // Skybuck: Fix Me
+//  MyZipFile: TZipper;
   archivename: String;
 Begin
+(*
 result := false;
 MyZipFile := TZipper.Create;
 MyZipFile.FileName := ZipSumaryFileName;
@@ -171,6 +177,7 @@ EnterCriticalSection(CS_SummaryDisk);
    END{Try};
 MyZipFile.Free;
 LeaveCriticalSection(CS_SummaryDisk);
+*)
 End;
 
 Function GetSummaryAsMemStream(out LMs:TMemoryStream):int64;
@@ -178,8 +185,8 @@ Begin
   Result := 0;
   EnterCriticalSection(CS_SummaryDisk);
     TRY
-    LMs.LoadFromFile(SummaryFileName);
-    result:= LMs.Size;
+	LMs.LoadFromFile(SummaryFileName);
+	result:= LMs.Size;
     LMs.Position:=0;
     EXCEPT ON E:Exception do
     END{Try};
@@ -256,11 +263,13 @@ End;
 Function CreateSumaryIndex():int64;
 var
   SumFile : File;
-  Readed : integer = 0;
+  Readed : integer;
   ThisRecord : TSummaryData;
   IndexPosition : int64;
-  CurrPos       : int64 = 0;
+  CurrPos       : int64;
 Begin
+  Readed := 0;
+  CurrPos := 0;
   beginperformance('CreateSumaryIndex');
   AssignFile(SumFile,SummaryFileName);
   SetLength(SumaryIndex,0,0);
@@ -291,10 +300,11 @@ End;
 Function GetIndexPosition(LText:String;out RecordData:TSummaryData; IsAlias:boolean = false):int64;
 var
   IndexPos : int64;
-  counter  : integer = 0;
+  counter  : integer;
   ThisRecord : TSummaryData;
 Begin
   result := -1;
+  counter := 0;
   RecordData := Default(TSummaryData);
   IndexPos := IndexFunction(LText,IndexLength);
   if length(SumaryIndex[IndexPos])>0 then
@@ -316,10 +326,11 @@ End;
 Function GetAddressBalanceIndexed(Address:string):int64;
 var
   IndexPos : integer;
-  counter  : integer = 0;
+  counter  : integer;
   ThisRecord : TSummaryData;
 Begin
 result := 0;
+counter := 0;
 IndexPos := IndexFunction(address,length(SumaryIndex));
 If IndexPos > Length(SumaryIndex) then Exit;
 if length(SumaryIndex[IndexPos])>0 then

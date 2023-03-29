@@ -11,7 +11,6 @@ unit mpSignerUtils;
 interface
 
 uses
-  Base64,
   TypInfo,
   SysUtils,
   ClpISigner,
@@ -172,9 +171,13 @@ begin
     SecureRandom) as IECKeyGenerationParameters);
   askp := KeyPairGeneratorInstance.GenerateKeyPair();
   Publickey:= (askp.Public as IECPublicKeyParameters).Q.GetEncoded();
-  Result.PublicKey := EncodeStringBase64(ByteToString(PublicKey));
+
+  // Skybuck: Fix Me
+//  Result.PublicKey := EncodeStringBase64(ByteToString(PublicKey));
   PrivateKey := (askp.Private as IECPrivateKeyParameters).D.ToByteArrayUnsigned;
-  Result.PrivateKey := EncodeStringBase64(ByteToString(PrivateKey));
+  // Skybuck: Fix Me
+
+//  Result.PrivateKey := EncodeStringBase64(ByteToString(PrivateKey));
 end;
 
 function ByteToString(const Value: TBytes): String;

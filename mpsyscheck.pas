@@ -1,11 +1,9 @@
 unit mpSysCheck;
 
-{$mode objfpc}{$H+}
-
 interface
 
 uses
-  Classes, SysUtils, fphttpclient, mpdisk{$IFDEF Unix} ,Linux {$ENDIF},nosodebug,
+  Classes, SysUtils, mpdisk{$IFDEF Unix} ,Linux {$ENDIF},nosodebug,
   nosocrypto;
 
 Type
@@ -52,25 +50,30 @@ for counter := 1 to cores do
    ThisThread.FreeOnTerminate:=true;
    ThisThread.Start;
    end;
-StartTime := GetTickCount64;
+
+// Skybuck: Fix Me
+//StartTime := GetTickCount64;
 Repeat
    sleep(1);
 until OpenHashThreads=0;
-EndTime := GetTickCount64;
+// Skybuck: Fix Me
+//EndTime := GetTickCount64;
 Result := (cores*10000) div (EndTime-StartTime);
 End;
 
 Function AllocateMem(UpToMb:integer=1024):int64;
 var
   MemMb    : array of pointer;
-  Finished : boolean = false;
-  h: TFPCHeapStatus;
+  Finished : boolean;
+// Skybuck: Fix Me
+//  h: TFPCHeapStatus;
   i: cardinal;
   LastHeapFails: boolean;
   Z: Pointer;
   {$IFDEF Unix} Info : TSysInfo; {$ENDIF}
 Begin
 result := 0;
+  Finished := false;
 {$IFDEF WINDOWS}
 Result := 0;
 LastHeapFails := ReturnNilIfGrowHeapFails;
@@ -95,15 +98,23 @@ End;
 Function TestDownloadSpeed():int64;
 var
   MS: TMemoryStream;
-  DownLink : String = '';
-  Conector : TFPHttpClient;
-  Sucess   : boolean = false;
+  DownLink : String;
+  // Skybuck: Fix Me
+//  Conector : TFPHttpClient;
+  Sucess   : boolean;
   timeStart, timeEnd : int64;
-  trys     : integer = 0;
+  trys     : integer;
 Begin
 result := 0;
+// Skybuck: Fix Me
+Sucess := false;
+trys := 0;
+DownLink := '';
 DownLink := 'https://raw.githubusercontent.com/Noso-Project/NosoWallet/main/1mb.dat';
 MS := TMemoryStream.Create;
+
+// Skybuck: Fix Me
+(*
 Conector := TFPHttpClient.Create(nil);
 conector.ConnectTimeout:=1000;
 conector.IOTimeout:=1000;
@@ -123,6 +134,8 @@ Inc(Trys);
 UNTIL ( (sucess) or (trys=5) );
 MS.Free;
 conector.free;
+*)
+
 if Sucess then result := 1048576 div (TimeEnd-TimeStart);
 End;
 

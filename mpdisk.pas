@@ -1,12 +1,10 @@
-unit mpdisk;
-
-{$mode objfpc}{$H+}
+﻿unit mpdisk;
 
 interface
 
 uses
-  Classes, SysUtils, MasterPaskalForm, Dialogs, Forms, nosotime, FileUtil, LCLType,
-  lclintf, controls, mpBlock, Zipper, mpcoin, mpMn, nosodebug,
+  Classes, SysUtils, MasterPaskalForm, Dialogs, Forms, nosotime,
+  controls, mpBlock, mpcoin, mpMn, nosodebug,
   {$IFDEF WINDOWS}Win32Proc, {$ENDIF}
   translation, strutils,nosogeneral, nosocrypto, nosounit;
 

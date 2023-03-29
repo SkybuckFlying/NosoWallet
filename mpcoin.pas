@@ -1,6 +1,4 @@
-unit mpCoin;
-
-{$mode objfpc}{$H+}
+﻿unit mpCoin;
 
 interface
 

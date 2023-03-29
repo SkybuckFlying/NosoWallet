@@ -1,0 +1,33 @@
+program NosoDelphiWallet;
+
+uses
+  Vcl.Forms,
+  UnitMain in '..\Delphi units\UnitMain.pas' {Form1},
+  masterpaskalform in '..\masterpaskalform.pas',
+  mpblock in '..\mpblock.pas',
+  mpcoin in '..\mpcoin.pas',
+  mpdisk in '..\mpdisk.pas',
+  mpgui in '..\mpgui.pas',
+  mplang in '..\mplang.pas',
+  mpmn in '..\mpmn.pas',
+  mpparser in '..\mpparser.pas',
+  mpprotocol in '..\mpprotocol.pas',
+  mpred in '..\mpred.pas',
+  mprpc in '..\mprpc.pas',
+  mpsignerutils in '..\mpsignerutils.pas',
+  mpsyscheck in '..\mpsyscheck.pas',
+  nosocrypto in '..\nosocrypto.pas',
+  nosodebug in '..\nosodebug.pas',
+  nosogeneral in '..\nosogeneral.pas',
+  nosotime in '..\nosotime.pas',
+  nosounit in '..\nosounit.pas',
+  translation in '..\translation.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForm1, Form1);
+  Application.Run;
+end.

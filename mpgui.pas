@@ -1,19 +1,17 @@
 unit mpGUI;
 
-{$mode objfpc}{$H+}
-
 interface
 
 uses
   Classes, SysUtils, MasterPaskalForm, nosotime, graphics, strutils, forms, controls, grids,stdctrls,
-  ExtCtrls, buttons, editbtn , menus, Clipbrd, IdContext, LCLTranslator, nosodebug, nosogeneral,
+  ExtCtrls, buttons, menus, Clipbrd, IdContext, nosodebug, nosogeneral,
   nosocrypto;
 
 type
   TFormInicio = class(Tform)
     procedure closeFormInicio(sender: TObject; var CanClose: boolean);
     private
-    public
+	public
     end;
 
   TFormSlots = class(Tform)

@@ -1,0 +1,1198 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{B0EE499A-41E3-487D-820C-D3FD48C11187}</ProjectGuid>
+        <ProjectVersion>18.5</ProjectVersion>
+        <FrameworkType>VCL</FrameworkType>
+        <MainSource>NosoDelphiWallet.dpr</MainSource>
+        <Base>True</Base>
+        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <TargetedPlatforms>1</TargetedPlatforms>
+        <AppType>Application</AppType>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+        <Base_Win32>true</Base_Win32>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
+        <Base_Win64>true</Base_Win64>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+        <Cfg_1>true</Cfg_1>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win32)'!=''">
+        <Cfg_1_Win32>true</Cfg_1_Win32>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+        <Cfg_2>true</Cfg_2>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
+        <Cfg_2_Win32>true</Cfg_2_Win32>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base)'!=''">
+        <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
+        <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
+        <DCC_E>false</DCC_E>
+        <DCC_N>false</DCC_N>
+        <DCC_S>false</DCC_S>
+        <DCC_F>false</DCC_F>
+        <DCC_K>false</DCC_K>
+        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
+        <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
+        <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
+        <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
+        <SanitizedProjectName>NosoDelphiWallet</SanitizedProjectName>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <DCC_UsePackage>DBXSqliteDriver;RESTComponents;DataSnapServerMidas;DBXDb2Driver;DBXInterBaseDriver;OmniThreadLibraryRuntime;vclactnband;vclFireDAC;emsclientfiredac;DelphiUnitsGraphicsTPixelMapVersion001;DataSnapFireDAC;svnui;tethering;FireDACADSDriver;DAV_VSTHost_D19;DBXMSSQLDriver;GLScene_RT;DatasnapConnectorsFreePascal;FireDACMSSQLDriver;DelphiUnitsGUIControlsTPixelMapControlVersion002;vcltouch;vcldb;bindcompfmx;svn;Intraweb;DBXOracleDriver;Spring.Data;inetdb;FmxTeeUI;emsedge;FireDACIBDriver;fmx;fmxdae;vclib;DelphiUnitsGUIControlsTPixelMapControlVersion001;FireDACDBXDriver;dbexpress;IndyCore;vclx;dsnap;DataSnapCommon;emsclient;FireDACCommon;FrameStandPackage_10_3;RESTBackendComponents;DataSnapConnectors;VCLRESTComponents;soapserver;DAV_Common_D19;vclie;bindengine;DBXMySQLDriver;FireDACOracleDriver;CloudService;FireDACMySQLDriver;DBXFirebirdDriver;DAV_VSTPlugin_D19;FireDACCommonODBC;FireDACCommonDriver;DataSnapClient;inet;bindcompdbx;IndyIPCommon;GR32_D;vcl;IndyIPServer;DBXSybaseASEDriver;IndySystem;FireDACDb2Driver;dsnapcon;VirtualTreesR;FireDACMSAccDriver;fmxFireDAC;FireDACInfxDriver;vclimg;TeeDB;FireDAC;emshosting;FireDACSqliteDriver;FireDACPgDriver;ibmonitor;FireDACASADriver;DelphiUnitsGraphicsTPixelMapVersion002;FireDACTDataDriver;DBXOdbcDriver;FMXTee;GMLib_D_Seattle10;GMLib_D_Seattle10_VCL;soaprtl;DbxCommonDriver;ibxpress;Tee;DataSnapServer;xmlrtl;soapmidas;DataSnapNativeClient;fmxobj;vclwinx;ibxbindings;rtl;emsserverresource;DbxClientDriver;FireDACDSDriver;DBXSybaseASADriver;GR32_R;CustomIPTransport;vcldsnap;DelphiUnitsGUIControlsTOpenGLControlVersion008;SynEditDR;bindcomp;appanalytics;DBXInformixDriver;IndyIPClient;bindcompvcl;TeeUI;dbxcds;VclSmp;GMLibEdit_D_Seattle10;adortl;FireDACODBCDriver;FixInsight_10_3;DataSnapIndy10ServerTransport;dsnapxml;DataSnapProviderClient;dbrtl;inetdbxpress;FireDACMongoDBDriver;IndyProtocols;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+        <BT_BuildType>Debug</BT_BuildType>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win64)'!=''">
+        <DCC_UsePackage>DBXSqliteDriver;RESTComponents;DataSnapServerMidas;DBXDb2Driver;DBXInterBaseDriver;OmniThreadLibraryRuntime;vclactnband;vclFireDAC;emsclientfiredac;DataSnapFireDAC;tethering;FireDACADSDriver;DAV_VSTHost_D19;DBXMSSQLDriver;GLScene_RT;DatasnapConnectorsFreePascal;FireDACMSSQLDriver;vcltouch;vcldb;bindcompfmx;Intraweb;DBXOracleDriver;Spring.Data;inetdb;FmxTeeUI;emsedge;FireDACIBDriver;fmx;fmxdae;vclib;FireDACDBXDriver;dbexpress;IndyCore;vclx;dsnap;DataSnapCommon;emsclient;FireDACCommon;FrameStandPackage_10_3;RESTBackendComponents;DataSnapConnectors;VCLRESTComponents;soapserver;vclie;bindengine;DBXMySQLDriver;FireDACOracleDriver;CloudService;FireDACMySQLDriver;DBXFirebirdDriver;DAV_VSTPlugin_D19;FireDACCommonODBC;FireDACCommonDriver;DataSnapClient;inet;bindcompdbx;IndyIPCommon;vcl;IndyIPServer;DBXSybaseASEDriver;IndySystem;FireDACDb2Driver;dsnapcon;VirtualTreesR;FireDACMSAccDriver;fmxFireDAC;FireDACInfxDriver;vclimg;TeeDB;FireDAC;emshosting;FireDACSqliteDriver;FireDACPgDriver;ibmonitor;FireDACASADriver;FireDACTDataDriver;DBXOdbcDriver;FMXTee;GMLib_D_Seattle10;GMLib_D_Seattle10_VCL;soaprtl;DbxCommonDriver;ibxpress;Tee;DataSnapServer;xmlrtl;soapmidas;DataSnapNativeClient;fmxobj;vclwinx;ibxbindings;rtl;emsserverresource;DbxClientDriver;FireDACDSDriver;DBXSybaseASADriver;GR32_R;CustomIPTransport;vcldsnap;SynEditDR;bindcomp;appanalytics;DBXInformixDriver;IndyIPClient;bindcompvcl;TeeUI;dbxcds;VclSmp;adortl;FireDACODBCDriver;DataSnapIndy10ServerTransport;dsnapxml;DataSnapProviderClient;dbrtl;inetdbxpress;FireDACMongoDBDriver;IndyProtocols;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1)'!=''">
+        <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+        <DCC_DebugDCUs>true</DCC_DebugDCUs>
+        <DCC_Optimize>false</DCC_Optimize>
+        <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+        <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+        <DCC_RemoteDebug>true</DCC_RemoteDebug>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <DCC_RemoteDebug>false</DCC_RemoteDebug>
+        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
+        <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2)'!=''">
+        <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+        <DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+        <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+        <DCC_DebugInformation>0</DCC_DebugInformation>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
+        <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+    </PropertyGroup>
+    <ItemGroup>
+        <DelphiCompile Include="$(MainSource)">
+            <MainSource>MainSource</MainSource>
+        </DelphiCompile>
+        <DCCReference Include="..\Delphi units\UnitMain.pas">
+            <Form>Form1</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\masterpaskalform.pas"/>
+        <DCCReference Include="..\mpblock.pas"/>
+        <DCCReference Include="..\mpcoin.pas"/>
+        <DCCReference Include="..\mpdisk.pas"/>
+        <DCCReference Include="..\mpgui.pas"/>
+        <DCCReference Include="..\mplang.pas"/>
+        <DCCReference Include="..\mpmn.pas"/>
+        <DCCReference Include="..\mpparser.pas"/>
+        <DCCReference Include="..\mpprotocol.pas"/>
+        <DCCReference Include="..\mpred.pas"/>
+        <DCCReference Include="..\mprpc.pas"/>
+        <DCCReference Include="..\mpsignerutils.pas"/>
+        <DCCReference Include="..\mpsyscheck.pas"/>
+        <DCCReference Include="..\nosocrypto.pas"/>
+        <DCCReference Include="..\nosodebug.pas"/>
+        <DCCReference Include="..\nosogeneral.pas"/>
+        <DCCReference Include="..\nosotime.pas"/>
+        <DCCReference Include="..\nosounit.pas"/>
+        <DCCReference Include="..\translation.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpAesEngine.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpAesLightEngine.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpAESPRNGRandom.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpAgreementUtilities.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpArgon2ParametersGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpArrayUtils.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpAsn1Objects.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpAsymmetricCipherKeyPair.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpAsymmetricKeyParameter.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpBaseKdfBytesGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpBigInteger.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpBigIntegers.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpBitConverter.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpBits.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpBlockCipherModes.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpBlowfishEngine.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpBsiObjectIdentifiers.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpBufferedBlockCipher.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpBufferedCipherBase.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpBufferedStreamCipher.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpChaChaEngine.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpCheck.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpCipherKeyGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpCipherUtilities.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpConverters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpCryptLibObjectIdentifiers.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpCryptoApiRandomGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpCryptoLibTypes.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpCryptoProObjectIdentifiers.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpCurve25519Custom.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpCustomNamedCurves.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDHAgreement.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDHBasicAgreement.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDHBasicKeyPairGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDHDomainParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDHKeyGenerationParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDHKeyGeneratorHelper.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDHKeyPairGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDHKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDHParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDHParametersGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDHParametersHelper.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDHPrivateKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDHPublicKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDHValidationParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDHValidationParams.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDigest.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDigestRandomGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDigestUtilities.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDsaDigestSigner.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDsaKeyGenerationParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDsaKeyPairGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDsaKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDsaParameter.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDsaParameterGenerationParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDsaParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDsaParametersGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDsaPrivateKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDsaPublicKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDsaSigner.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpDsaValidationParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpEacObjectIdentifiers.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpECAlgorithms.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpECC.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpECCompUtilities.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpECCurveConstants.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpECDHBasicAgreement.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpECDHCBasicAgreement.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpECDomainParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpECDsaSigner.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpECGost3410NamedCurves.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpECIESPublicKeyParser.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpECKeyGenerationParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpECKeyPairGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpECKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpECNamedCurveTable.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpECNRSigner.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpECPrivateKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpECPublicKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpECSchnorrSipaSigner.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpEd25519.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpEd25519Blake2B.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpEd25519Blake2BKeyGenerationParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpEd25519Blake2BKeyPairGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpEd25519Blake2BPrivateKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpEd25519Blake2BPublicKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpEd25519Blake2BSigner.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpEd25519CtxBlake2BSigner.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpEd25519CtxSigner.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpEd25519KeyGenerationParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpEd25519KeyPairGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpEd25519PhBlake2BSigner.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpEd25519PhSigner.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpEd25519PrivateKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpEd25519PublicKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpEd25519Signer.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpEdECObjectIdentifiers.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpEncoders.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpEndoPreCompInfo.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpEphemeralKeyPair.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpEphemeralKeyPairGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpFiniteFields.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpFixedPointPreCompInfo.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpGeneratorUtilities.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpGenericPolynomialExtensionField.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpGF2Polynomial.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpGlvTypeAEndomorphism.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpGlvTypeAParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpGlvTypeBEndomorphism.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpGlvTypeBParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpHkdfBytesGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpHkdfParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpHMac.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpHMacDsaKCalculator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIAesEngine.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIAesLightEngine.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIAlgorithmParameterSpec.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIanaObjectIdentifiers.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIArgon2ParametersGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIAsn1Objects.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIAsymmetricCipherKeyPair.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIAsymmetricCipherKeyPairGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIAsymmetricKeyParameter.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIBaseKdfBytesGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIBasicAgreement.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIBlockCipher.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIBlockCipherModes.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIBlockCipherPadding.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIBlowfishEngine.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIBufferedBlockCipher.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIBufferedCipher.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIBufferedCipherBase.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIBufferedStreamCipher.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIChaChaEngine.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpICipherKeyGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpICipherParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpICryptoApiRandomGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpICurve25519Custom.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDerivationFunction.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDerivationParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDHAgreement.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDHBasicAgreement.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDHBasicKeyPairGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDHDomainParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDHKeyGenerationParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDHKeyGeneratorHelper.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDHKeyPairGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDHKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDHParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDHParametersGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDHPrivateKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDHPublicKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDHValidationParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDHValidationParams.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDigest.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDigestRandomGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDsa.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDsaDigestSigner.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDsaExt.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDsaKCalculator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDsaKeyGenerationParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDsaKeyPairGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDsaKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDsaParameter.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDsaParameterGenerationParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDsaParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDsaParametersGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDsaPrivateKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDsaPublicKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDsaSigner.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIDsaValidationParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIECC.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIECDHBasicAgreement.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIECDHCBasicAgreement.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIECDomainParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIECDsaSigner.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIECIESPublicKeyParser.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIECKeyGenerationParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIECKeyPairGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIECKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIECNRSigner.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIECPrivateKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIECPublicKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIECSchnorrSipaSigner.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIEd25519.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIEd25519Blake2B.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIEd25519Blake2BKeyGenerationParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIEd25519Blake2BKeyPairGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIEd25519Blake2BPrivateKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIEd25519Blake2BPublicKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIEd25519Blake2BSigner.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIEd25519CtxBlake2BSigner.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIEd25519CtxSigner.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIEd25519KeyGenerationParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIEd25519KeyPairGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIEd25519PhBlake2BSigner.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIEd25519PhSigner.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIEd25519PrivateKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIEd25519PublicKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIEd25519Signer.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIEndoPreCompInfo.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIEphemeralKeyPair.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIEphemeralKeyPairGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIESCipher.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIESEngine.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIESParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIESParameterSpec.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIESWithCipherParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIExtensionField.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIFiniteField.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIFixedPointPreCompInfo.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIGenericPolynomialExtensionField.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIGF2Polynomial.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIGlvEndomorphism.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIGlvTypeAEndomorphism.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIGlvTypeAParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIGlvTypeBEndomorphism.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIGlvTypeBParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIHkdfBytesGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIHkdfParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIHMac.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIHMacDsaKCalculator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIIESCipher.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIIESEngine.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIIESParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIIESParameterSpec.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIIESWithCipherParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIIso18033KdfParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIKdf1BytesGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIKdf2BytesGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIKdfParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIKeyEncoder.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIKeyGenerationParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIKeyParameter.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIKeyParser.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIMac.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIMultipliers.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpInterleave.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIOidTokenizer.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIPaddedBufferedBlockCipher.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIPaddingModes.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIParametersWithIV.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIParametersWithRandom.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIPascalCoinECIESKdfBytesGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIPascalCoinIESEngine.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIPbeParametersGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIPkcs5S2ParametersGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIPolynomial.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIPolynomialExtensionField.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIPreCompCallBack.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIPreCompInfo.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIPrimeField.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIRandom.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIRandomDsaKCalculator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIRandomGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIRandomNumberGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIRawAgreement.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIRijndaelEngine.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpISalsa20Engine.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIScalarSplitParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIScaleXNegateYPointMap.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIScaleXPointMap.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIScaleYNegateXPointMap.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpISchnorr.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpISchnorrDigestSigner.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpISchnorrExt.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIScryptParametersGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpISecP256K1Custom.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpISecP256R1Custom.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpISecP384R1Custom.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpISecP521R1Custom.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpISecT283Custom.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpISecureRandom.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpISigner.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpISignersEncodings.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIso18033KdfParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpISpeckEngine.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpISpeckLegacyEngine.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIStreamCipher.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIValidityPrecompInfo.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIWNafPreCompInfo.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIWTauNafPreCompInfo.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIX9ECC.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIX9ECParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIX9ECParametersHolder.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIX25519Agreement.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIX25519KeyGenerationParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIX25519KeyPairGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIX25519PrivateKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIX25519PublicKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIXSalsa20Engine.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpIZTauElement.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpKdf1BytesGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpKdf2BytesGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpKdfParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpKeyEncoder.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpKeyGenerationParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpKeyParameter.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpLongArray.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpMacUtilities.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpMiscObjectIdentifiers.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpMod.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpMultipliers.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpNat.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpNat192.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpNat256.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpNat320.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpNat384.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpNat512.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpNistNamedCurves.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpNistObjectIdentifiers.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpOidTokenizer.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpOiwObjectIdentifiers.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpOSRandom.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpPaddedBufferedBlockCipher.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpPaddingModes.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpParametersWithIV.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpParametersWithRandom.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpParameterUtilities.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpPascalCoinECIESKdfBytesGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpPascalCoinIESEngine.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpPbeParametersGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpPkcs5S2ParametersGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpPkcsObjectIdentifiers.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpPrimeField.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpRandom.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpRandomDsaKCalculator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpRandomNumberGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpRijndaelEngine.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpRosstandartObjectIdentifiers.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpSalsa20Engine.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpScalarSplitParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpScaleXNegateYPointMap.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpScaleXPointMap.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpScaleYNegateXPointMap.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpSchnorrDigestSigner.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpScryptParametersGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpSecNamedCurves.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpSecObjectIdentifiers.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpSecP256K1Custom.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpSecP256R1Custom.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpSecP384R1Custom.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpSecP521R1Custom.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpSecT283Custom.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpSecureRandom.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpSetWeakRef.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpSignersEncodings.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpSignerUtilities.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpSimpleBigDecimal.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpSpeckEngine.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpSpeckLegacyEngine.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpStringUtils.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpTeleTrusTNamedCurves.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpTeleTrusTObjectIdentifiers.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpTimes.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpTnaf.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpValidityPrecompInfo.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpWNafPreCompInfo.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpWTauNafPreCompInfo.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpX9ECC.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpX9ECParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpX9ECParametersHolder.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpX9ObjectIdentifiers.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpX25519.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpX25519Agreement.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpX25519Field.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpX25519KeyGenerationParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpX25519KeyPairGenerator.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpX25519PrivateKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpX25519PublicKeyParameters.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpXSalsa20Engine.pas"/>
+        <DCCReference Include="..\Delphi libraries\cryptolib4pascal\ClpZTauElement.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpAdler32.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpAP.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpArgon2TypeAndVersion.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpArrayUtils.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpBernstein.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpBernstein1.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpBitConverter.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpBits.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpBKDR.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpBlake2B.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpBlake2BP.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpBlake2BParams.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpBlake2S.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpBlake2SP.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpBlake2SParams.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpConverters.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpCRC.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpCRC16.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpCRC32.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpCRC32Fast.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpCRC64.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpDEK.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpDJB.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpELF.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpFNV.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpFNV1a.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpFNV1a64.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpFNV64.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpGost.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpGOST3411_2012.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpGrindahl256.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpGrindahl512.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpHAS160.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpHash.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpHashBuffer.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpHashCryptoNotBuildIn.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpHashFactory.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpHashLibTypes.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpHashResult.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpHashRounds.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpHashSize.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpHaval.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpHMACNotBuildInAdapter.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpIBlake2BParams.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpIBlake2SParams.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpICRC.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpIHash.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpIHashInfo.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpIHashResult.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpIKDF.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpJenkins3.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpJS.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpKDF.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpMD2.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpMD4.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpMD5.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpMDBase.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpMultipleTransformNonBlock.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpMurmur2.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpMurmur2_64.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpMurmurHash3_x64_128.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpMurmurHash3_x86_32.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpMurmurHash3_x86_128.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpNullable.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpNullDigest.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpOneAtTime.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpPanama.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpPBKDF_Argon2NotBuildInAdapter.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpPBKDF_ScryptNotBuildInAdapter.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpPBKDF2_HMACNotBuildInAdapter.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpPJW.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpRadioGatun32.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpRadioGatun64.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpRIPEMD.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpRIPEMD128.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpRIPEMD160.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpRIPEMD256.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpRIPEMD320.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpRotating.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpRS.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpSDBM.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpSHA0.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpSHA1.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpSHA2_224.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpSHA2_256.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpSHA2_256Base.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpSHA2_384.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpSHA2_512.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpSHA2_512_224.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpSHA2_512_256.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpSHA2_512Base.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpSHA3.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpShiftAndXor.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpSipHash.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpSipHash128.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpSnefru.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpSuperFast.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpTiger.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpTiger2.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpWhirlPool.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpXXHash32.pas"/>
+        <DCCReference Include="..\Delphi libraries\hashlib4pascal\HlpXXHash64.pas"/>
+        <DCCReference Include="..\Delphi libraries\simplebaselib4pascal\SbpBase16.pas"/>
+        <DCCReference Include="..\Delphi libraries\simplebaselib4pascal\SbpBase32.pas"/>
+        <DCCReference Include="..\Delphi libraries\simplebaselib4pascal\SbpBase32Alphabet.pas"/>
+        <DCCReference Include="..\Delphi libraries\simplebaselib4pascal\SbpBase58.pas"/>
+        <DCCReference Include="..\Delphi libraries\simplebaselib4pascal\SbpBase58Alphabet.pas"/>
+        <DCCReference Include="..\Delphi libraries\simplebaselib4pascal\SbpBase64.pas"/>
+        <DCCReference Include="..\Delphi libraries\simplebaselib4pascal\SbpBase64Alphabet.pas"/>
+        <DCCReference Include="..\Delphi libraries\simplebaselib4pascal\SbpBase85.pas"/>
+        <DCCReference Include="..\Delphi libraries\simplebaselib4pascal\SbpBase85Alphabet.pas"/>
+        <DCCReference Include="..\Delphi libraries\simplebaselib4pascal\SbpBits.pas"/>
+        <DCCReference Include="..\Delphi libraries\simplebaselib4pascal\SbpEncodingAlphabet.pas"/>
+        <DCCReference Include="..\Delphi libraries\simplebaselib4pascal\SbpIBase32.pas"/>
+        <DCCReference Include="..\Delphi libraries\simplebaselib4pascal\SbpIBase32Alphabet.pas"/>
+        <DCCReference Include="..\Delphi libraries\simplebaselib4pascal\SbpIBase58.pas"/>
+        <DCCReference Include="..\Delphi libraries\simplebaselib4pascal\SbpIBase58Alphabet.pas"/>
+        <DCCReference Include="..\Delphi libraries\simplebaselib4pascal\SbpIBase64.pas"/>
+        <DCCReference Include="..\Delphi libraries\simplebaselib4pascal\SbpIBase64Alphabet.pas"/>
+        <DCCReference Include="..\Delphi libraries\simplebaselib4pascal\SbpIBase85.pas"/>
+        <DCCReference Include="..\Delphi libraries\simplebaselib4pascal\SbpIBase85Alphabet.pas"/>
+        <DCCReference Include="..\Delphi libraries\simplebaselib4pascal\SbpIEncodingAlphabet.pas"/>
+        <DCCReference Include="..\Delphi libraries\simplebaselib4pascal\SbpSimpleBaseLibTypes.pas"/>
+        <DCCReference Include="..\Delphi libraries\simplebaselib4pascal\SbpUtilities.pas"/>
+        <DCCReference Include="..\Delphi units\UnitCriticalSections.pas"/>
+        <None Include="..\Delphi libraries\cryptolib4pascal\CryptoLib.inc"/>
+        <None Include="..\Delphi libraries\cryptolib4pascal\CryptoLibHelper.inc"/>
+        <None Include="..\Delphi libraries\cryptolib4pascal\LICENSE"/>
+        <None Include="..\Delphi libraries\cryptolib4pascal\README.md"/>
+        <None Include="..\Delphi libraries\hashlib4pascal\HashLib.inc"/>
+        <None Include="..\Delphi libraries\hashlib4pascal\HashLibHelper.inc"/>
+        <None Include="..\Delphi libraries\hashlib4pascal\LICENSE"/>
+        <None Include="..\Delphi libraries\hashlib4pascal\README.md"/>
+        <None Include="..\Delphi libraries\simplebaselib4pascal\SimpleBaseLib.inc"/>
+        <None Include="..\Delphi libraries\simplebaselib4pascal\SimpleBaseLibHelper.inc"/>
+        <BuildConfiguration Include="Release">
+            <Key>Cfg_2</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Base">
+            <Key>Base</Key>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Debug">
+            <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Delphi.Personality.12</Borland.Personality>
+        <Borland.ProjectType>Application</Borland.ProjectType>
+        <BorlandProject>
+            <Delphi.Personality>
+                <Source>
+                    <Source Name="MainSource">NosoDelphiWallet.dpr</Source>
+                </Source>
+            </Delphi.Personality>
+            <Deployment Version="3">
+                <DeployFile LocalName="..\Delphi libraries\hashlib4pascal\HashLib.inc" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\Delphi libraries\cryptolib4pascal\CryptoLibHelper.inc" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\Delphi libraries\hashlib4pascal\HashLibHelper.inc" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\Delphi libraries\hashlib4pascal\LICENSE" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\Delphi libraries\cryptolib4pascal\LICENSE" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\Delphi libraries\hashlib4pascal\README.md" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\Delphi libraries\simplebaselib4pascal\SimpleBaseLibHelper.inc" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\Delphi libraries\cryptolib4pascal\CryptoLib.inc" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win32\Debug\NosoDelphiWallet.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>NosoDelphiWallet.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\Delphi libraries\cryptolib4pascal\README.md" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\Delphi libraries\simplebaselib4pascal\SimpleBaseLib.inc" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployClass Name="AdditionalDebugSymbols">
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidClassesDexFile">
+                    <Platform Name="Android">
+                        <RemoteDir>classes</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidFileProvider">
+                    <Platform Name="Android">
+                        <RemoteDir>res\xml</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidGDBServer">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidLibnativeArmeabiFile">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidLibnativeMipsFile">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\mips</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidServiceOutput">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidSplashImageDef">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidSplashStyles">
+                    <Platform Name="Android">
+                        <RemoteDir>res\values</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidSplashStylesV21">
+                    <Platform Name="Android">
+                        <RemoteDir>res\values-v21</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_DefaultAppIcon">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon144">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xxhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon36">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-ldpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon48">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-mdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon72">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-hdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon96">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage426">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-small</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage470">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-normal</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage640">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-large</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage960">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xlarge</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="DebugSymbols">
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="DependencyFramework">
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.framework</Extensions>
+                    </Platform>
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.framework</Extensions>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Required="true" Name="DependencyPackage">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.bpl</Extensions>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="File">
+                    <Platform Name="Android">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\Resources\StartUp\</RemoteDir>
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\Resources\StartUp\</RemoteDir>
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Launch1024">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Launch1536">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Launch2048">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Launch768">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Launch320">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Launch640">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Launch640x1136">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectAndroidManifest">
+                    <Platform Name="Android">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceDebug">
+                    <Platform Name="iOSDevice32">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceResourceRules">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSEntitlements">
+                    <Platform Name="iOSDevice32">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSInfoPList">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSResource">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXDebug">
+                    <Platform Name="OSX64">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXEntitlements">
+                    <Platform Name="OSX32">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX64">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXInfoPList">
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXResource">
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\Resources</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\Resources</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Required="true" Name="ProjectOutput">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Linux64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectUWPManifest">
+                    <Platform Name="Win32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="UWP_DelphiLogo150">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="UWP_DelphiLogo44">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="Linux64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="OSX64" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
+            </Deployment>
+            <Platforms>
+                <Platform value="Win32">True</Platform>
+                <Platform value="Win64">False</Platform>
+            </Platforms>
+        </BorlandProject>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+    <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
+    <Import Project="$(MSBuildProjectName).deployproj" Condition="Exists('$(MSBuildProjectName).deployproj')"/>
+</Project>

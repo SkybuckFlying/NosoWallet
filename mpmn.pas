@@ -1,12 +1,10 @@
 unit mpMN;
 
-{$mode objfpc}{$H+}
-
 interface
 
 uses
   Classes, SysUtils, MasterPaskalform, mpcoin, mpgui, IdTCPClient, IdGlobal,
-  strutils, nosodebug, nosogeneral, nosocrypto, nosotime, nosounit;
+  strutils, nosodebug, nosogeneral, nosocrypto, nosotime, nosounit, SyncObjs;
 
 Type
 
@@ -71,12 +69,12 @@ var
   CurrSynctus : string;
   VerifiedNodes : String;
   UnconfirmedIPs : integer;
-  CSVerNodes    : TRTLCriticalSection;
-  CSMNsChecks   : TRTLCriticalSection;
-  DecVerThreads : TRTLCriticalSection;
-  CSMNsFile     : TRTLCriticalSection;
-  CSMNsIPCheck  : TRTLCriticalSection;
-  CSMN_FileText : TRTLCriticalSection;
+  CSVerNodes    : TCriticalSection;
+  CSMNsChecks   : TCriticalSection;
+  DecVerThreads : TCriticalSection;
+  CSMNsFile     : TCriticalSection;
+  CSMNsIPCheck  : TCriticalSection;
+  CSMN_FileText : TCriticalSection;
 
 implementation
 

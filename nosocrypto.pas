@@ -7,15 +7,13 @@ Noso Unit for crypto functions
 Requires: cryptohashlib , mpsignerutils
 }
 
-{$mode ObjFPC}{$H+}
-
 INTERFACE
 
 uses
   Classes, SysUtils, strutils,
-  HlpHashFactory, md5,
+  HlpHashFactory,
   ClpConverters,ClpBigInteger,SbpBase58,
-  mpsignerutils, base64;
+  mpsignerutils;
 
 {Hashing functions}
 function HashSha256String(StringToHash:string):string;
@@ -158,7 +156,9 @@ End;
 {Returns the hash MD5 of a string}
 Function HashMD5String(StringToHash:String):String;
 Begin
-  result := Uppercase(MD5Print(MD5String(StringToHash)));
+  // Skybuck: Fix Me
+
+//  result := Uppercase(MD5Print(MD5String(StringToHash)));
 End;
 
 {Returns the hash MD5 of a file on disk}
@@ -166,7 +166,8 @@ Function HashMD5File(FileToHash:String):String;
 Begin
   result := Uppercase('d41d8cd98f00b204e9800998ecf8427e');
   TRY
-  result := UpperCase(MD5Print(MD5File(FileToHash)));
+  // Skybuck: Fix Me
+//  result := UpperCase(MD5Print(MD5File(FileToHash)));
   EXCEPT ON E:Exception do
   END;
 End;
@@ -190,9 +191,10 @@ var
 Begin
   Result := '';
   TRY
-  MessageAsBytes :=StrToByte(DecodeStringBase64(StringtoSign));
-  Signature := TSignerUtils.SignMessage(MessageAsBytes, StrToByte(DecodeStringBase64(PrivateKey)),TKeyType.SECP256K1);
-  Result := EncodeStringBase64(ByteToString(Signature));
+  // Skybuck: Fix Me
+//  MessageAsBytes :=StrToByte(DecodeStringBase64(StringtoSign));
+//  Signature := TSignerUtils.SignMessage(MessageAsBytes, StrToByte(DecodeStringBase64(PrivateKey)),TKeyType.SECP256K1);
+//  Result := EncodeStringBase64(ByteToString(Signature));
  EXCEPT Exit;
  END{Try};
 End;
@@ -204,9 +206,10 @@ var
 Begin
   result := false;
   TRY
-  MessageAsBytes := StrToByte(DecodeStringBase64(StringToVerify));
-  Signature := StrToByte(DecodeStringBase64(B64String));
-  Result := TSignerUtils.VerifySignature(Signature, MessageAsBytes,StrToByte(DecodeStringBase64(PublicKey)), TKeyType.SECP256K1);
+  // Skybuck: Fix Me
+//  MessageAsBytes := StrToByte(DecodeStringBase64(StringToVerify));
+///  Signature := StrToByte(DecodeStringBase64(B64String));
+//  Result := TSignerUtils.VerifySignature(Signature, MessageAsBytes,StrToByte(DecodeStringBase64(PublicKey)), TKeyType.SECP256K1);
   EXCEPT Exit;
   END{Try};
 End;
@@ -255,8 +258,10 @@ End;
 {Returns a transfer hash, base58}
 Function GetTransferHash(TextLine:string):String;
 var
-  Resultado : String = '';
+  Resultado : String;
 Begin
+  // Skybuck: Fix Me
+  Resultado := '';
   Resultado := HashSHA256String(TextLine);
   Resultado := B16toB58(Resultado);
   Result := 'tR'+Resultado+ B10toB58(BMB58resumen(Resultado)) ;
@@ -300,7 +305,9 @@ Begin
     Address     := GetAddressFromPublicKey(Pubkey);
     Signature   := GetStringSigned('I OWN THIS ADDRESS '+Address+currtime,PrivKey);
     Certificate := Pubkey+':'+Currtime+':'+signature;
-    Certificate := UPPERCASE(XorEncode(HashSha256String('noso'),certificate));
+
+  // Skybuck: Fix Me
+//	Certificate := UPPERCASE(XorEncode(HashSha256String('noso'),certificate));
     result      := SplitCertificate(certificate);
   EXCEPT Exit;
   END; {TRY}
@@ -317,9 +324,12 @@ var
    Function UnSplitCertificate(TextData:String):String;
    var
      counter   :integer;
-     TrunkStr  :string = '';
+	 TrunkStr  :string;
    Begin
-     result := '';
+  // Skybuck: Fix Me
+	 TrunkStr  := '';
+
+	 result := '';
      for counter := 1 to length(TextData) do
        begin
        if TextData[counter]<>'0' then TrunkStr := TrunkStr+TextData[counter]
@@ -337,9 +347,11 @@ Begin
   Result      := '';
   TRY
     Certificate := UnSplitCertificate(certificate);
-    Certificate := XorDecode(HashSha256String('noso'), Certificate);
-    DataArray   := SplitString(Certificate,':');
-    Address     := GetAddressFromPublicKey(DataArray[0]);
+	// Skybuck: Fix Me
+	//    Certificate := XorDecode(HashSha256String('noso'), Certificate);
+	// Skybuck: Fix Me
+//	DataArray   := SplitString(Certificate,':');
+	Address     := GetAddressFromPublicKey(DataArray[0]);
     CertTime    := DataArray[1];
     Signature   := DataArray[2];
     if VerifySignedString('I OWN THIS ADDRESS '+Address+CertTime,Signature,DataArray[0]) then
@@ -358,15 +370,19 @@ var
    counter : integer;
    ValA, ValB, Diference : Integer;
    ResChar : String;
-   Resultado : String = '';
+   Resultado : String;
 Begin
+	// Skybuck: Fix Me
+   Resultado := '';
+
 result := 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF';
 if Length(Target) < 32 then SetLength(Target,32);
 if Length(ThisHash) < 32 then SetLength(ThisHash,32);
 for counter := 1 to 32 do
    begin
-   ValA := Hex2Dec(ThisHash[counter]);
-   ValB := Hex2Dec(Target[counter]);
+	// Skybuck: Fix Me
+//   ValA := Hex2Dec(ThisHash[counter]);
+//   ValB := Hex2Dec(Target[counter]);
    Diference := Abs(ValA - ValB);
    ResChar := UPPERCASE(IntToHex(Diference,1));
    Resultado := Resultado+ResChar
@@ -382,7 +398,10 @@ var
   finalHASH : string;
   ThisSum : integer;
   charA,charB,charC,charD:integer;
-  Filler : string = '%)+/5;=CGIOSYaegk';
+
+	// Skybuck: Fix Me
+//  Filler : string = '%)+/5;=CGIOSYaegk';
+	Filler : string;
 
   Function GetClean(number:integer):integer;
   Begin
@@ -397,10 +416,13 @@ var
 
   function RebuildHash(incoming : string):string;
   var
-    counter : integer;
-    resultado2 : string = '';
-    chara,charb, charf : integer;
+	counter : integer;
+	// Skybuck: Fix Me
+	resultado2 : string;
+	chara,charb, charf : integer;
   Begin
+	// Skybuck: Fix Me
+	resultado2 := '';
   for counter := 1 to length(incoming) do
      begin
      chara := Ord(incoming[counter]);
@@ -445,8 +467,9 @@ End;
 Function TrimLeadingCeros(const S: String): String;
 Begin
   Result := S.Trim;
-  if Result[1] = '0' then
-    Result := Result.TrimLeft('0');
+	// Skybuck: Fix Me
+//  if Result[1] = '0' then
+//	Result := Result.TrimLeft('0');
 End;
 
 function B10ToB16(const sVal: String): String;
@@ -571,8 +594,9 @@ End;
 Function ChecksumBase58(const S: String): string;
 var
   C: Char;
-  Total: integer = 0;
+  Total: integer;
 Begin
+	Total := 0;
   for C in S do
     Inc(Total, Pos(C, B58Alphabet)-1);
   Result := IntToStr(Total);

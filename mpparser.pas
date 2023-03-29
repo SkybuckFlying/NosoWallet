@@ -1,12 +1,10 @@
-unit mpParser;
-
-{$mode objfpc}{$H+}
+﻿unit mpParser;
 
 interface
 
 uses
   Classes, SysUtils, MasterPaskalForm, mpGUI, mpRed, mpDisk, nosotime, mpblock, mpcoin,
-  dialogs, fileutil, forms, idglobal, strutils, mpRPC, DateUtils, Clipbrd,translation,
+  dialogs, forms, idglobal, strutils, mpRPC, DateUtils, Clipbrd,translation,
   idContext, math, mpMN, MPSysCheck, nosodebug, nosogeneral, nosocrypto, nosounit;
 
 procedure ProcessLinesAdd(const ALine: String);

@@ -1,11 +1,9 @@
-unit mpBlock;
-
-{$mode objfpc}{$H+}
+﻿unit mpBlock;
 
 interface
 
 uses
-  Classes, SysUtils,MasterPaskalForm, fileutil, mpcoin, dialogs, math,
+  Classes, SysUtils,MasterPaskalForm, mpcoin, dialogs, math,
   nosotime, mpMN, nosodebug,nosogeneral,nosocrypto, nosounit;
 
 Procedure CrearBloqueCero();

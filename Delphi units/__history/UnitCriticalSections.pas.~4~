@@ -1,0 +1,40 @@
+unit UnitCriticalSections;
+
+interface
+
+uses
+	SyncObjs;
+
+type
+	TRTLCriticalSection = TCriticalSection;
+
+procedure InitCriticalSection( Para : TRTLCriticalSection );
+procedure DoneCriticalSection( Para : TRTLCriticalSection );
+
+procedure EnterCriticalSection( Para : TRTLCriticalSection );
+procedure LeaveCriticalSection( Para : TRTLCriticalSection );
+
+
+implementation
+
+procedure InitCriticalSection( Para : TRTLCriticalSection );
+begin
+
+end;
+
+procedure DoneCriticalSection( Para : TRTLCriticalSection );
+begin
+
+end;
+
+procedure EnterCriticalSection( Para : TRTLCriticalSection );
+begin
+
+end;
+
+procedure LeaveCriticalSection( Para : TRTLCriticalSection );
+begin
+
+end;
+
+end.

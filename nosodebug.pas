@@ -6,12 +6,10 @@ December 20th, 2022
 Unit to implement debug functionalities on noso project apps.
 }
 
-{$mode ObjFPC}{$H+}
-
 INTERFACE
 
 uses
-  Classes, SysUtils;
+  Classes, SysUtils, SyncObjs;
 
 type
   Tperformance = Record
@@ -55,10 +53,10 @@ var
   ArrPerformance : array of TPerformance;
   NosoDebug_UsePerformance : boolean = false;
   ArrNDLogs    : Array of TLogND;
-  ArrNDCSs     : array of TRTLCriticalSection;
+  ArrNDCSs     : array of TCriticalSection;
   ArrNDSLs     : array of TStringList;
   ArrProcess   : Array of TCoreManager;
-  CS_ThManager : TRTLCriticalSection;
+  CS_ThManager : TCriticalSection;
 
 IMPLEMENTATION
 
@@ -74,8 +72,9 @@ Begin
   for counter := 0 to high(ArrPerformance) do
     begin
     if Tag = ArrPerformance[counter].tag then
-      begin
-      ArrPerformance[counter].Start:=GetTickCount64;
+	  begin
+	  // Skybuck: Fix Me
+//	  ArrPerformance[counter].Start:= GetTickCount64;
       Inc(ArrPerformance[counter].Count);
       exit;
       end;
@@ -83,7 +82,7 @@ Begin
   NewData := default(TPerformance);
   NewData.tag   :=tag;
   NewData.Min    :=99999;
-  NewData.Start  :=GetTickCount64;
+//  NewData.Start  :=GetTickCount64;
   NewData.Count  :=1;
   Insert(NewData,ArrPerformance,length(ArrPerformance));
 End;
@@ -92,15 +91,17 @@ End;
 Function EndPerformance(Tag:String):int64;
 var
   counter  : integer;
-  duration : int64 = 0;
+  duration : int64;
 Begin
+  duration := 0;
   result := 0;
   if not NosoDebug_UsePerformance then exit;
   for counter := 0 to high(ArrPerformance) do
     begin
     if tag = ArrPerformance[counter].tag then
-      begin
-      duration :=GetTickCount64-ArrPerformance[counter].Start;
+	  begin
+	  // Skybuck: Fix Me
+//	  duration := GetTickCount64-ArrPerformance[counter].Start;
       ArrPerformance[counter].Total  := ArrPerformance[counter].Total+Duration;
       ArrPerformance[counter].Average:=ArrPerformance[counter].Total div ArrPerformance[counter].Count;
       if duration>ArrPerformance[counter].Max then
@@ -165,7 +166,8 @@ Begin
   NewData.tag:=Uppercase(Logname);
   NewData.Filename:=LogFileName;
   SetLength(ArrNDCSs,length(ArrNDCSs)+1);
-  InitCriticalSection(ArrNDCSs[length(ArrNDCSs)-1]);
+  // Skybuck: Fix Me
+//  InitCriticalSection(ArrNDCSs[length(ArrNDCSs)-1]);
   SetLEngth(ArrNDSLs,length(ArrNDSLs)+1);
   ArrNDSLs[length(ArrNDSLs)-1] := TStringlist.Create;
   if LogFileName <> '' then
@@ -184,11 +186,13 @@ Begin
   for counter := 0 to length(ArrNDLogs)-1 do
     begin
     if ArrNDLogs[counter].tag = Uppercase(LogTag) then
-      begin
-      EnterCriticalSection(ArrNDCSs[counter]);
+	  begin
+	  // Skybuck: Fix Me
+//      EnterCriticalSection(ArrNDCSs[counter]);
       ArrNDSLs[counter].Add(NewLine);
       Inc(ArrNDLogs[counter].Count);
-      LeaveCriticalSection(ArrNDCSs[counter]);
+	  // Skybuck: Fix Me
+//	  LeaveCriticalSection(ArrNDCSs[counter]);
       end;
     end;
 End;
@@ -204,13 +208,15 @@ Begin
     if ArrNDLogs[counter].tag = Uppercase(LogTag) then
       begin
       if ArrNDSLs[counter].Count>0 then
-        begin
-        EnterCriticalSection(ArrNDCSs[counter]);
+		begin
+	  // Skybuck: Fix Me
+//        EnterCriticalSection(ArrNDCSs[counter]);
         LineContent := ArrNDSLs[counter][0];
         Result := true;
         ArrNDSLs[counter].Delete(0);
-        if ArrNDLogs[counter].ToDisk then SaveTextToDisk(LineContent,ArrNDLogs[counter].Filename);
-        LeaveCriticalSection(ArrNDCSs[counter]);
+		if ArrNDLogs[counter].ToDisk then SaveTextToDisk(LineContent,ArrNDLogs[counter].Filename);
+	  // Skybuck: Fix Me
+//        LeaveCriticalSection(ArrNDCSs[counter]);
         break;
         end;
       end;
@@ -224,8 +230,9 @@ var
 Begin
   for counter := 0 to length(ArrNDLogs)-1 do
     begin
-    ArrNDSLs[counter].Free;
-    DoneCriticalsection(ArrNDCSs[counter]);
+	ArrNDSLs[counter].Free;
+  // Skybuck: Fix Me
+//	DoneCriticalsection(ArrNDCSs[counter]);
     end;
 End;
 
@@ -241,16 +248,19 @@ Begin
   NewValue.ThName  := ThName;
   NewValue.ThStart := TimeStamp;
   NewValue.ThLast  := TimeStamp;
-  EnterCriticalSection(CS_ThManager);
+  // Skybuck: Fix Me
+//  EnterCriticalSection(CS_ThManager);
   Insert(NewValue,ArrProcess,Length(ArrProcess));
-  LeaveCriticalSection(CS_ThManager);
+	  // Skybuck: Fix Me
+//  LeaveCriticalSection(CS_ThManager);
 End;
 
 Procedure UpdateOpenThread(ThName:String;TimeStamp:int64);
 var
   counter : integer;
 Begin
-  EnterCriticalSection(CS_ThManager);
+	  // Skybuck: Fix Me
+//  EnterCriticalSection(CS_ThManager);
   for counter := 0 to High(ArrProcess) do
     begin
     if UpperCase(ArrProcess[counter].ThName) = UpperCase(ThName) then
@@ -258,32 +268,39 @@ Begin
       ArrProcess[counter].ThLast:=TimeStamp;
       Break;
       end;
-    end;
-  LeaveCriticalSection(CS_ThManager);
+	end;
+	  // Skybuck: Fix Me
+
+//  LeaveCriticalSection(CS_ThManager);
 End;
 
 Procedure CloseOpenThread(ThName:String);
 var
   counter : integer;
 Begin
-  EnterCriticalSection(CS_ThManager);
+	// Skybuck: Fix Me
+//  EnterCriticalSection(CS_ThManager);
   for counter := 0 to High(ArrProcess) do
     begin
     if UpperCase(ArrProcess[counter].ThName) = UpperCase(ThName) then
       begin
       Delete(ArrProcess,Counter,1);
       Break;
-      end;
-    end;
-  LeaveCriticalSection(CS_ThManager);
+	  end;
+	end;
+	// Skybuck: Fix Me
+//  LeaveCriticalSection(CS_ThManager);
 End;
 
 Function GetProcessCopy():TProcessCopy;
 Begin
   Setlength(Result,0);
-  EnterCriticalSection(CS_ThManager);
-  Result := copy(ArrProcess,0,length(ArrProcess));
-  LeaveCriticalSection(CS_ThManager);
+	  // Skybuck: Fix Me
+//  EnterCriticalSection(CS_ThManager);
+	  // Skybuck: Fix Me
+//  Result := copy(ArrProcess,0,length(ArrProcess));
+	  // Skybuck: Fix Me
+//  LeaveCriticalSection(CS_ThManager);
 End;
 
 {$ENDREGION}
@@ -294,10 +311,12 @@ INITIALIZATION
   Setlength(ArrNDCSs,0);
   Setlength(ArrNDSLs,0);
   Setlength(ArrProcess,0);
-  InitCriticalSection(CS_ThManager);
+  // Skybuck: Fix Me
+//  InitCriticalSection(CS_ThManager);
 
 FINALIZATION
-  DoneCriticalSection(CS_ThManager);
+  // Skybuck: Fix Me
+//  DoneCriticalSection(CS_ThManager);
   FreeAllLogs;
 
 END. {END UNIT}
